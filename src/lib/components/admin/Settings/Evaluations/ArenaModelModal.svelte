@@ -230,7 +230,7 @@
 							>
 								<img
 									src={profileImageUrl}
-									class="size-16 rounded-full object-cover shrink-0"
+									class="size-16 rounded-full object-cover shrink-0 user-image"
 									alt="Profile"
 								/>
 
