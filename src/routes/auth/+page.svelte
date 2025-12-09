@@ -203,7 +203,7 @@
 
 	{#if loaded}
 		<div
-			class="fixed bg-transparent min-h-screen w-full flex justify-center font-primary z-50 text-black dark:text-white"
+			class="fixed bg-slate-100 min-h-screen w-full flex justify-center font-primary z-50 text-black dark:text-white"
 			id="auth-container"
 		>
 			<div class="w-full px-10 min-h-screen flex flex-col text-center">
@@ -223,7 +223,7 @@
 					</div>
 				{:else}
 					<div class="my-auto flex flex-col justify-center items-center">
-						<div class=" sm:max-w-md my-auto pb-10 w-full dark:text-gray-100">
+						<div class=" sm:max-w-md my-auto p-7 w-full dark:text-gray-100 bg-white mb-3 rounded-lg">
 							{#if $config?.metadata?.auth_logo_position === 'center'}
 								<div class="flex justify-center mb-6">
 									<img
@@ -243,17 +243,7 @@
 								}}
 							>
 								<div class="mb-1">
-									<div class=" text-2xl font-medium">
-										{#if $config?.onboarding ?? false}
-											{$i18n.t(`Get started with {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-										{:else if mode === 'ldap'}
-											{$i18n.t(`Sign in to {{WEBUI_NAME}} with LDAP`, { WEBUI_NAME: $WEBUI_NAME })}
-										{:else if mode === 'signin'}
-											{$i18n.t(`Sign in to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-										{:else}
-											{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
-										{/if}
-									</div>
+									<div class=" text-2xl font-medium mb-4">Sign in to Titan</div>
 
 									{#if $config?.onboarding ?? false}
 										<div class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-500">
@@ -266,7 +256,7 @@
 								</div>
 
 								{#if $config?.features.enable_login_form || $config?.features.enable_ldap || form}
-									<div class="flex flex-col mt-4">
+									<div class="flex flex-col mt-4 hidden">
 										{#if mode === 'signup'}
 											<div class="mb-2">
 												<label for="name" class="text-sm font-medium text-left mb-1 block"
@@ -355,7 +345,7 @@
 										{/if}
 									</div>
 								{/if}
-								<div class="mt-5">
+								<div class="mt-5 hidden">
 									{#if $config?.features.enable_login_form || $config?.features.enable_ldap || form}
 										{#if mode === 'ldap'}
 											<button
@@ -403,16 +393,18 @@
 							</form>
 
 							{#if Object.keys($config?.oauth?.providers ?? {}).length > 0}
-								<div class="inline-flex items-center justify-center w-full">
-									<hr class="w-32 h-px my-4 border-0 dark:bg-gray-100/10 bg-gray-700/10" />
-									{#if $config?.features.enable_login_form || $config?.features.enable_ldap || form}
-										<span
-											class="px-3 text-sm font-medium text-gray-900 dark:text-white bg-transparent"
-											>{$i18n.t('or')}</span
-										>
-									{/if}
+								<div class="hidden">
+									<div class="inline-flex items-center justify-center w-full">
+										<hr class="w-32 h-px my-4 border-0 dark:bg-gray-100/10 bg-gray-700/10" />
+										{#if $config?.features.enable_login_form || $config?.features.enable_ldap || form}
+											<span
+												class="px-3 text-sm font-medium text-gray-900 dark:text-white bg-transparent"
+												>{$i18n.t('or')}</span
+											>
+										{/if}
 
-									<hr class="w-32 h-px my-4 border-0 dark:bg-gray-100/10 bg-gray-700/10" />
+										<hr class="w-32 h-px my-4 border-0 dark:bg-gray-100/10 bg-gray-700/10" />
+									</div>
 								</div>
 								<div class="flex flex-col space-y-2">
 									{#if $config?.oauth?.providers?.google}
@@ -446,7 +438,7 @@
 									{/if}
 									{#if $config?.oauth?.providers?.microsoft}
 										<button
-											class="flex justify-center items-center bg-gray-700/5 hover:bg-gray-700/10 dark:bg-gray-100/5 dark:hover:bg-gray-100/10 dark:text-gray-300 dark:hover:text-white transition w-full rounded-full font-medium text-sm py-2.5"
+											class="flex justify-center items-center bg-secondary-700 text-white transition w-full rounded-full font-medium text-sm py-2.5"
 											on:click={() => {
 												window.location.href = `${WEBUI_BASE_URL}/oauth/microsoft/login`;
 											}}
@@ -563,6 +555,7 @@
 								</div>
 							</div>
 						{/if}
+						<div class="mysp-footer">Powered by a fork of <span>Open WebUI</span>, maintained and supported by <span>JioStar Team</span></div>
 					</div>
 				{/if}
 			</div>

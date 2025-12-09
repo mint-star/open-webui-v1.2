@@ -15,7 +15,7 @@
 			  src.startsWith('/')
 			? src
 			: `${WEBUI_BASE_URL}/user.png`}
-	class=" {className} object-cover rounded-full"
+	class=" {className} object-cover rounded-full user-image"
 	alt="profile"
 	draggable="false"
 />

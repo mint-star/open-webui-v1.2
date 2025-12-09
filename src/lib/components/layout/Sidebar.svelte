@@ -65,6 +65,8 @@
 	import HotkeyHint from '../common/HotkeyHint.svelte';
 	import { key } from 'vega';
 
+	import AppList from '$lib/components/app-list.svelte';
+
 	const BREAKPOINT = 768;
 
 	let scrollTop = 0;
@@ -704,7 +706,7 @@
 				{/if}
 			</div>
 		</button>
-
+		
 		<div>
 			<div>
 				<div class=" py-2 flex justify-center items-center">
@@ -725,7 +727,7 @@
 								<div class="self-center relative">
 									<img
 										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-										class=" size-7 object-cover rounded-full"
+										class=" size-7 object-cover rounded-full user-image"
 										alt={$i18n.t('Open User Profile Menu')}
 										aria-label={$i18n.t('Open User Profile Menu')}
 									/>
@@ -820,7 +822,7 @@
 				<div
 					class="{scrollTop > 0
 						? 'visible'
-						: 'invisible'} sidebar-bg-gradient-to-b bg-linear-to-b from-gray-50 dark:from-gray-950 to-transparent from-50% pointer-events-none absolute inset-0 -z-10 -mb-6"
+						: 'invisible'} sidebar-bg-gradient-to-b bg-linear-to-b from-gray-50 dark:from-gray-950 to-transparent from-50% pointer-events-none absolute inset-0 -z-10 -mb-6 titan-gradient"
 				></div>
 			</div>
 
@@ -932,6 +934,8 @@
 						</div>
 					{/if}
 				</div>
+
+				<AppList />
 
 				{#if ($models ?? []).length > 0 && (($settings?.pinnedModels ?? []).length > 0 || $config?.default_pinned_models)}
 					<Folder
@@ -1289,7 +1293,7 @@
 								<div class=" self-center mr-3 relative">
 									<img
 										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-										class=" size-7 object-cover rounded-full"
+										class=" size-7 object-cover rounded-full user-image"
 										alt={$i18n.t('Open User Profile Menu')}
 										aria-label={$i18n.t('Open User Profile Menu')}
 									/>

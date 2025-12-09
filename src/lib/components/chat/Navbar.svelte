@@ -40,6 +40,8 @@
 	import Knobs from '../icons/Knobs.svelte';
 	import { WEBUI_API_BASE_URL } from '$lib/constants';
 
+	import AppDropdown from '$lib/components/app-dropdown.svelte'
+
 	const i18n = getContext('i18n');
 
 	export let initNewChat: Function;
@@ -117,6 +119,9 @@
 				</div>
 
 				<div class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
+					<div class="mr-2">
+						<AppDropdown />
+					</div>
 					<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
 
 					{#if $user?.role === 'user' ? ($user?.permissions?.chat?.temporary ?? true) && !($user?.permissions?.chat?.temporary_enforced ?? false) : true}
@@ -244,7 +249,7 @@
 									<span class="sr-only">{$i18n.t('User menu')}</span>
 									<img
 										src={`${WEBUI_API_BASE_URL}/users/${$user?.id}/profile/image`}
-										class="size-6 object-cover rounded-full"
+										class="size-6 object-cover rounded-full user-image"
 										alt=""
 										draggable="false"
 									/>
