@@ -1,7 +1,7 @@
 <script>
 import { DropdownMenu } from "bits-ui";
 
-import { PUBLIC_SCRIPT_STUDIO, PUBLIC_JIOSTAR_CREATOR, PUBLIC_TRUSTGATE_AI, PUBLIC_DISTRIBUTION_AI, PUBLIC_MOMENTS_AI, PUBLIC_SUBSTUDIO, PUBLIC_SWAPIFY, PUBLIC_STORYCUT, PUBLIC_VOXSPLIT } from '$env/static/public';
+import { PUBLIC_SCRIPT_STUDIO, PUBLIC_JIOSTAR_CREATOR, PUBLIC_TRUSTGATE_AI, PUBLIC_DISTRIBUTION_AI, PUBLIC_MOMENTS_AI, PUBLIC_SUBSTUDIO, PUBLIC_SWAPIFY, PUBLIC_STORYCUT, PUBLIC_VOXSPLIT, PUBLIC_TALENTMATCH_AI } from '$env/static/public';
 </script>
 
 <DropdownMenu.Root>
@@ -68,6 +68,12 @@ import { PUBLIC_SCRIPT_STUDIO, PUBLIC_JIOSTAR_CREATOR, PUBLIC_TRUSTGATE_AI, PUBL
       <a href={PUBLIC_VOXSPLIT} target="_blank" class="px-4 py-3 hover:bg-gray-100 cursor-pointer flex items-center gap-3 text-gray-900 dark:text-white hover:bg-indigo-50 dark:hover:bg-gray-700">
         <img src="/static/voxSplit.png" class="w-5 h-5 shrink-0" alt="" />
         <span class="text-sm font-medium font-primary">VoxSplit</span>
+      </a>
+    </DropdownMenu.Item>
+    <DropdownMenu.Item>
+      <a href={PUBLIC_TALENTMATCH_AI} target="_blank" class="px-4 py-3 hover:bg-gray-100 cursor-pointer flex items-center gap-3 text-gray-900 dark:text-white hover:bg-indigo-50 dark:hover:bg-gray-700">
+        <img src="/static/talent-match-ai.png" class="w-5 h-5 shrink-0" alt="" />
+        <span class="text-sm font-medium font-primary">Talent Match AI</span>
       </a>
     </DropdownMenu.Item>
   </DropdownMenu.Content>
