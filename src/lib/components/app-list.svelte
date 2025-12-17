@@ -9,7 +9,7 @@ import { PUBLIC_SCRIPT_STUDIO, PUBLIC_JIOSTAR_CREATOR, PUBLIC_TRUSTGATE_AI, PUBL
     </div>
   </div>
   
-  <div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
+  <!-- <div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
     <a class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-white dark:hover:bg-gray-900 transition" href={PUBLIC_JIOSTAR_CREATOR} target="_blank">
       <div class="self-center">
         <img src="/static/jioStar-creator.png" class="w-5 h-5 shrink-0" alt="" />
@@ -31,7 +31,7 @@ import { PUBLIC_SCRIPT_STUDIO, PUBLIC_JIOSTAR_CREATOR, PUBLIC_TRUSTGATE_AI, PUBL
         <div class=" self-center text-sm font-medium">Trustgate AI</div>
       </div>
     </a>
-  </div>
+  </div> -->
   
   <div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
     <a class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-white dark:hover:bg-gray-900 transition" href={PUBLIC_SCRIPT_STUDIO} target="_blank">
@@ -46,7 +46,7 @@ import { PUBLIC_SCRIPT_STUDIO, PUBLIC_JIOSTAR_CREATOR, PUBLIC_TRUSTGATE_AI, PUBL
   </div>
   
   
-  <div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
+  <!-- <div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
     <a class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-white dark:hover:bg-gray-900 transition" href={PUBLIC_DISTRIBUTION_AI} target="_blank">
       <div class="self-center">
         <img src="/static/Distribution_AI.svg" class="w-5 h-5 shrink-0" alt="" />
@@ -113,7 +113,7 @@ import { PUBLIC_SCRIPT_STUDIO, PUBLIC_JIOSTAR_CREATOR, PUBLIC_TRUSTGATE_AI, PUBL
         <div class=" self-center text-sm font-medium">VoxSplit</div>
       </div>
     </a>
-  </div>
+  </div> -->
   <div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
     <a class="grow flex items-center space-x-3 rounded-lg px-2 py-[7px] hover:bg-white dark:hover:bg-gray-900 transition" href={PUBLIC_TALENTMATCH_AI} target="_blank">
       <div class="self-center">
