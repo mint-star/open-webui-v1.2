@@ -9,8 +9,10 @@
       <DropdownMenu.Trigger
         class="inline-flex items-center justify-center font-primary
                py-1.5 px-3 rounded-md text-sm font-medium
-               text-black hover:bg-gray-100 dark:text-white"
+               text-black hover:bg-gray-100 dark:text-white gap-2"
+        style={`background: #${suite.bg}`}
       >
+        <img src={suite.icon} alt="" width="18" class="inline-flex">
         {suite.suiteName}
         <svg
           class="ml-2 h-4 w-4"

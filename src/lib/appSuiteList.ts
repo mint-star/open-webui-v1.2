@@ -1,4 +1,5 @@
 import {
+  PUBLIC_JIOSTAR_CREATOR,
   PUBLIC_SCRIPT_STUDIO,
   PUBLIC_TALENTMATCH_AI,
   PUBLIC_TITAN_BASE_URL
@@ -12,12 +13,16 @@ export type AppItem = {
 
 export type AppSuite = {
   suiteName: string;
+  icon: string;
+  bg?: string;
   apps: AppItem[];
 };
 
 export const suites: AppSuite[] = [
   {
+    icon: "/static/suite/hr.svg",
     suiteName: "HR Suite",
+    bg: "fff4ec",
     apps: [
       {
         label: "Policy Chatbot",
@@ -32,7 +37,9 @@ export const suites: AppSuite[] = [
     ]
   },
   {
+    icon: "/static/suite/legal.svg",
     suiteName: "Legal Suite",
+    bg: "edf1ff",
     apps: [
       {
         label: "Legal Contract Agent",
@@ -47,18 +54,10 @@ export const suites: AppSuite[] = [
     ]
   },
   {
-    suiteName: "Content Suite",
+    icon: "/static/suite/business.svg",
+    suiteName: "Business Suite",
+    bg: "e6f8ff",
     apps: [
-      {
-        label: "General Chat",
-        href: `${PUBLIC_TITAN_BASE_URL}/?model=general-chat`,
-        icon: "/static/suite/general-chat.svg",
-      },
-      {
-        label: "Azure OpenAI GPT-5",
-        href: `${PUBLIC_TITAN_BASE_URL}/?model=azure-openai-gpt-5`,
-        icon: "/static/suite/azure-openAI.svg",
-      },
       {
         label: "TV Viewership-2",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=tv-viewership-2`,
@@ -69,10 +68,22 @@ export const suites: AppSuite[] = [
         href: `${PUBLIC_TITAN_BASE_URL}/?model=revenue-agent`,
         icon: "/static/suite/revenue-agent.svg",
       },
+    ]
+  },
+  {
+    icon: "/static/suite/content.svg",
+    suiteName: "Content Suite",
+    bg: "ffeeee",
+    apps: [
       {
         label: "Script Studio",
         href: PUBLIC_SCRIPT_STUDIO,
         icon: "/static/script-studio.png",
+      },
+      {
+        label: "Jiostar Creator",
+        href: PUBLIC_JIOSTAR_CREATOR,
+        icon: "/static/jioStar-creator.png",
       },
     ]
   },

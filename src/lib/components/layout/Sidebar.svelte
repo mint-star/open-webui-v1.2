@@ -935,8 +935,6 @@
 					{/if}
 				</div>
 
-				<AppList />
-
 				{#if ($models ?? []).length > 0 && (($settings?.pinnedModels ?? []).length > 0 || $config?.default_pinned_models)}
 					<Folder
 						id="sidebar-models"
