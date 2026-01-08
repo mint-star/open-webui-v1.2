@@ -59,12 +59,12 @@ export const suites: AppSuite[] = [
     bg: "e6f8ff",
     apps: [
       {
-        label: "TV Viewership-2",
+        label: "TV Viewership Agent",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=tv-viewership-2`,
         icon: "/static/suite/tv-viewership-2.svg",
       },
       {
-        label: "Revenue Agent",
+        label: "TV Revenue Agent",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=revenue-agent`,
         icon: "/static/suite/revenue-agent.svg",
       },
