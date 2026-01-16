@@ -13,9 +13,16 @@
                whitespace-nowrap transition-all duration-200"
 				style={`background: #${suite.bg}`}
 			>
-				<img src={suite.icon} alt="" width="18" class="inline-flex shrink-0" />
+				<img
+					src={suite.icon}
+					alt={`${suite.suiteName} icon`}
+					width="18"
+					class="inline-flex shrink-0"
+				/>
 				<span class="hidden sm:inline">{suite.suiteName}</span>
-				<span class="sm:hidden" aria-label={suite.suiteName}>{suite.suiteName.split(' ')[0]}</span>
+				<span class="sm:hidden" aria-label={suite.suiteName}
+					>{suite.suiteName?.split(' ')[0] || suite.suiteName}</span
+				>
 				<svg
 					class="ml-0.5 sm:ml-2 h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0"
 					fill="none"
