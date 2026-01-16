@@ -115,7 +115,7 @@
 					{/if}
 				</div>
 
-				<div class="flex-1 flex gap-3 justify-center">
+				<div class="flex-1 flex gap-3 justify-end lg:justify-center mr-3 lg:mr-0">
 					<AppDropdown />
 				</div>
 
