@@ -58,6 +58,7 @@
 						<a
 							href={app.href}
 							on:click={(e) => handleAppClick(e, app)}
+              target={!app.model ? "_blank" : "_self"}
 							class="px-4 py-2 flex items-center gap-3 text-gray-900 hover:bg-indigo-50 {!app.access
 								? 'opacity-60'
 								: ''}"
@@ -107,6 +108,7 @@
 					<DropdownMenu.Item>
 						<a
 							href={app.href}
+              target={!app.model ? "_blank" : "_self"}
 							on:click={(e) => handleAppClick(e, app)}
 							class="px-4 py-3 flex items-center gap-3 text-gray-900 hover:bg-indigo-50 {!app.access
 								? 'opacity-60'
@@ -137,7 +139,7 @@
 			<Dialog.Title class="text-lg font-bold text-red-600 mb-2">RESTRICTED ACCESS</Dialog.Title>
 
 			<Dialog.Description class="text-gray-800 mb-4 text-sm">
-				You currently do not have access. To request access, kindly contact 
+				For access, kindly contact
 				<a href="mailto:titan.support@jiostar.com" class="font-medium">titan.support@jiostar.com</a
 				>.
 			</Dialog.Description>
