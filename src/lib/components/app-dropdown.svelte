@@ -134,7 +134,7 @@
              -translate-x-1/2 -translate-y-1/2
              bg-white rounded-lg shadow-xl p-6 text-center"
 		>
-			<Dialog.Title class="text-lg font-bold text-red-600 mb-2">RESTRCITED ACCESS</Dialog.Title>
+			<Dialog.Title class="text-lg font-bold text-red-600 mb-2">RESTRICTED ACCESS</Dialog.Title>
 
 			<Dialog.Description class="text-gray-800 mb-4 text-sm">
 				You currently do not have access. To request access, kindly contact 
