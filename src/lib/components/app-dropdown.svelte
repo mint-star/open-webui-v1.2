@@ -137,7 +137,7 @@
 			<Dialog.Title class="text-lg font-bold text-red-600 mb-2">RESTRICTED ACCESS</Dialog.Title>
 
 			<Dialog.Description class="text-gray-800 mb-4 text-sm">
-				You currently do not have access. To request access, kindly contact 
+				For access, kindly contact
 				<a href="mailto:titan.support@jiostar.com" class="font-medium">titan.support@jiostar.com</a
 				>.
 			</Dialog.Description>
