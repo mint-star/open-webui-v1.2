@@ -24,7 +24,8 @@ export type AppItem = {
   label: string;
   href: string;
   icon: string;
-  model?: AppModel; // Now strictly limited to the constants above
+  model?: AppModel;
+  access?: boolean;
 };
 
 export type AppSuite = {
@@ -44,7 +45,8 @@ export const suites: AppSuite[] = [
         label: "Policy Chatbot",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${policyChatbot}`,
         icon: "/static/suite/policy-chatbot.svg",
-        model: policyChatbot
+        model: policyChatbot,
+        access: false
       },
       {
         label: "Talent Match AI",
@@ -62,13 +64,15 @@ export const suites: AppSuite[] = [
         label: "Legal Contract Agent",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${legalContractSuit}`,
         icon: "/static/suite/legal-contract-suit.svg",
-        model: legalContractSuit
+        model: legalContractSuit,
+        access: false
       },
       {
         label: "Legal Knowledge Base",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${legalKnowledgeBase}`,
         icon: "/static/suite/legal-knowledge-suit.svg",
-        model: legalKnowledgeBase
+        model: legalKnowledgeBase,
+        access: false
       },
     ]
   },
@@ -81,13 +85,15 @@ export const suites: AppSuite[] = [
         label: "TV Viewership Agent",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${tvViewership}`,
         icon: "/static/suite/tv-viewership-2.svg",
-        model: tvViewership
+        model: tvViewership,
+        access: false
       },
       {
         label: "TV Revenue Agent",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${revenueAgent}`,
         icon: "/static/suite/revenue-agent.svg",
-        model: revenueAgent
+        model: revenueAgent,
+        access: false
       },
     ]
   },
