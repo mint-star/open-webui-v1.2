@@ -243,7 +243,7 @@
 								}}
 							>
 								<div class="mb-1">
-									<div class=" text-2xl font-medium mb-4">Sign in to Titan</div>
+									<div class=" text-2xl font-medium mb-4 text-black">Sign in to TITAN</div>
 
 									{#if $config?.onboarding ?? false}
 										<div class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-500">
