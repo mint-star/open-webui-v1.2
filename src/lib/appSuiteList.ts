@@ -5,17 +5,33 @@ import {
   PUBLIC_TITAN_BASE_URL
 } from "$env/static/public";
 
+// 1. Define the specific model constants
+const policyChatbot = "policy-chatbot";
+const legalContractSuit = "legal-contract-suit";
+const legalKnowledgeBase = "legal-knowledge-base";
+const tvViewership = "tv-viewership-2";
+const revenueAgent = "revenue-agent";
+
+// 2. Create a Union Type from these specific values
+export type AppModel = 
+  | typeof policyChatbot 
+  | typeof legalContractSuit 
+  | typeof legalKnowledgeBase 
+  | typeof tvViewership 
+  | typeof revenueAgent;
+
 export type AppItem = {
   label: string;
   href: string;
   icon: string;
+  model?: AppModel; // Now strictly limited to the constants above
 };
 
 export type AppSuite = {
   suiteName: string;
   icon: string;
   bg?: string;
-  apps: AppItem[];
+  apps: AppItem[]
 };
 
 export const suites: AppSuite[] = [
@@ -26,8 +42,9 @@ export const suites: AppSuite[] = [
     apps: [
       {
         label: "Policy Chatbot",
-        href: `${PUBLIC_TITAN_BASE_URL}/?model=policy-chatbot`,
+        href: `${PUBLIC_TITAN_BASE_URL}/?model=${policyChatbot}`,
         icon: "/static/suite/policy-chatbot.svg",
+        model: policyChatbot
       },
       {
         label: "Talent Match AI",
@@ -43,13 +60,15 @@ export const suites: AppSuite[] = [
     apps: [
       {
         label: "Legal Contract Agent",
-        href: `${PUBLIC_TITAN_BASE_URL}/?model=legal-contract-suit`,
+        href: `${PUBLIC_TITAN_BASE_URL}/?model=${legalContractSuit}`,
         icon: "/static/suite/legal-contract-suit.svg",
+        model: legalContractSuit
       },
       {
         label: "Legal Knowledge Base",
-        href: `${PUBLIC_TITAN_BASE_URL}/?model=legal-knowledge-base`,
+        href: `${PUBLIC_TITAN_BASE_URL}/?model=${legalKnowledgeBase}`,
         icon: "/static/suite/legal-knowledge-suit.svg",
+        model: legalKnowledgeBase
       },
     ]
   },
@@ -60,13 +79,15 @@ export const suites: AppSuite[] = [
     apps: [
       {
         label: "TV Viewership Agent",
-        href: `${PUBLIC_TITAN_BASE_URL}/?model=tv-viewership-2`,
+        href: `${PUBLIC_TITAN_BASE_URL}/?model=${tvViewership}`,
         icon: "/static/suite/tv-viewership-2.svg",
+        model: tvViewership
       },
       {
         label: "TV Revenue Agent",
-        href: `${PUBLIC_TITAN_BASE_URL}/?model=revenue-agent`,
+        href: `${PUBLIC_TITAN_BASE_URL}/?model=${revenueAgent}`,
         icon: "/static/suite/revenue-agent.svg",
+        model: revenueAgent
       },
     ]
   },
