@@ -48,6 +48,7 @@
 
 				if (!localStorage?.theme) {
 					localStorage.theme = 'titan';
+					document.documentElement.style.setProperty('--color-gray-100', '#ede9f9');
 				}
 
 				if (localStorage.theme === 'system') {
@@ -66,12 +67,12 @@
 				} else if (localStorage.theme === 'her') {
 					document.documentElement.classList.add('her');
 					metaThemeColorTag.setAttribute('content', '#983724');
-				} else if (localStorage.theme === 'titan') {
-					document.documentElement.classList.add('titan');
-					document.documentElement.style.setProperty('--color-gray-100', '#ede9f9');
-				} else {
+				} else if (localStorage.theme === 'dark') {
 					document.documentElement.classList.add('dark');
 					metaThemeColorTag.setAttribute('content', '#171717');
+				} else {
+					document.documentElement.classList.add('titan');
+					document.documentElement.style.setProperty('--color-gray-100', '#ede9f9');
 				}
 
 				window.matchMedia('(prefers-color-scheme: dark)').addListener((e) => {

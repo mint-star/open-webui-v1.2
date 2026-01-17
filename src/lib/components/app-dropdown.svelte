@@ -34,7 +34,7 @@
 <div class="flex lg:hidden items-center">
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger
-			class="inline-flex items-center gap-2 py-2 px-4 rounded-md text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 whitespace-nowrap"
+			class="inline-flex items-center gap-2 py-2 px-4 rounded-md text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 whitespace-nowrap suites-btn"
 		>
 			Suites
 			<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,14 +43,14 @@
 		</DropdownMenu.Trigger>
 
 		<DropdownMenu.Content
-			class="bg-white border border-gray-200 rounded shadow-lg mt-2 py-2 w-[260px] z-[999]"
+			class="bg-white border border-gray-200 rounded shadow-lg mt-2 py-1 w-[250px] z-[999] dark:bg-gray-850 dark:border-gray-700"
 		>
 			{#each apps as suite}
 				<div
-					class="px-4 py-2 text-sm font-semibold uppercase flex items-center gap-2"
+					class="px-4 py-2 text-sm font-semibold uppercase flex items-center gap-2 suites-btn"
 					style="background: #{suite.bg}"
 				>
-					<span class="text-black">{suite.suiteName}</span>
+					<span class="text-black dark:text-white">{suite.suiteName}</span>
 				</div>
 
 				{#each suite.apps as app}
@@ -59,7 +59,7 @@
 							href={app.href}
 							on:click={(e) => handleAppClick(e, app)}
               target={!app.model ? "_blank" : "_self"}
-							class="px-4 py-2 flex items-center gap-3 text-gray-900 hover:bg-indigo-50 {!app.access
+							class="px-4 py-3 flex items-center gap-3 text-gray-900 dark:text-white hover:bg-indigo-50 dark:hover:bg-gray-800 {!app.access
 								? 'opacity-60'
 								: ''}"
 						>
@@ -86,7 +86,7 @@
 	{#each apps as suite}
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger
-				class="inline-flex items-center justify-center font-primary py-1.5 px-3 rounded-md text-sm font-medium text-black hover:bg-gray-100 dark:text-white gap-2"
+				class="inline-flex items-center justify-center font-primary py-1.5 px-3 rounded-md text-sm font-medium text-black hover:bg-gray-100 gap-2 suites-btn"
 				style="background: #{suite.bg}"
 			>
 				<img src={suite.icon} alt="" width="18" class="inline-flex" />
@@ -102,7 +102,7 @@
 			</DropdownMenu.Trigger>
 
 			<DropdownMenu.Content
-				class="bg-white border border-gray-200 rounded shadow-lg mt-2 py-1 w-[250px] z-[999]"
+				class="bg-white border border-gray-200 rounded shadow-lg mt-2 py-1 w-[250px] z-[999] dark:bg-gray-850 dark:border-gray-700"
 			>
 				{#each suite.apps as app}
 					<DropdownMenu.Item>
@@ -110,7 +110,7 @@
 							href={app.href}
               target={!app.model ? "_blank" : "_self"}
 							on:click={(e) => handleAppClick(e, app)}
-							class="px-4 py-3 flex items-center gap-3 text-gray-900 hover:bg-indigo-50 {!app.access
+							class="px-4 py-3 flex items-center gap-3 text-gray-900 dark:text-white hover:bg-indigo-50 dark:hover:bg-gray-800 {!app.access
 								? 'opacity-60'
 								: ''}"
 						>
