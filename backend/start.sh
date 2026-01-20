@@ -79,19 +79,14 @@ else
     ARGS=(--workers "$UVICORN_WORKERS")
 fi
 
+# Prepare uvicorn command
+UVICORN_CMD=("$PYTHON_CMD" -m uvicorn open_webui.main:app --host "$HOST" --port "$PORT" --forwarded-allow-ips '*' "${ARGS[@]}")
+
 # Run uvicorn with New Relic APM agent if NEW_RELIC_LICENSE_KEY is set
 if [ -n "$NEW_RELIC_LICENSE_KEY" ]; then
     echo "Starting with New Relic APM monitoring..."
-    WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec newrelic-admin run-program "$PYTHON_CMD" -m uvicorn open_webui.main:app \
-        --host "$HOST" \
-        --port "$PORT" \
-        --forwarded-allow-ips '*' \
-        "${ARGS[@]}"
+    WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec newrelic-admin run-program "${UVICORN_CMD[@]}"
 else
     # Run uvicorn without New Relic
-    WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec "$PYTHON_CMD" -m uvicorn open_webui.main:app \
-        --host "$HOST" \
-        --port "$PORT" \
-        --forwarded-allow-ips '*' \
-        "${ARGS[@]}"
+    WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec "${UVICORN_CMD[@]}"
 fi
