@@ -127,7 +127,15 @@ RUN apt-get update && \
 # install python dependencies
 COPY --chown=$UID:$GID ./backend/requirements.txt ./requirements.txt
 
-RUN pip3 install --no-cache-dir uv && \
+# New Relic APM Agent Installation
+# Requires environment variables for runtime configuration:
+# - NEW_RELIC_LICENSE_KEY (required): Your New Relic license key
+# - NEW_RELIC_APP_NAME (required): Application name in New Relic
+# - NEW_RELIC_LOG=stdout (recommended): Direct logs to stdout
+# - NEW_RELIC_DISTRIBUTED_TRACING_ENABLED=true (recommended): Enable distributed tracing
+# - NEW_RELIC_LOG_LEVEL=info (optional): Log level (debug/info/warning/error)
+RUN pip3 install --no-cache-dir newrelic && \
+    pip3 install --no-cache-dir uv && \
     if [ "$USE_CUDA" = "true" ]; then \
     # If you use CUDA the whisper and embedding model will be downloaded on first use
     pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/$USE_CUDA_DOCKER_VER --no-cache-dir && \
