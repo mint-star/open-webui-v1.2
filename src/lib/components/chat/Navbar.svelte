@@ -81,7 +81,7 @@
 >
 	<div class="flex items-center w-full pl-1.5 pr-1">
 		<div
-			class=" bg-linear-to-b via-50% from-white via-white to-transparent dark:from-gray-900 dark:via-gray-900 dark:to-transparent pointer-events-none absolute inset-0 -bottom-1 z-[-1] border-b border-slate-200 dark:border-gray-850"
+			class=" bg-white dark:bg-gray-900 pointer-events-none absolute inset-0 -bottom-1 z-[-1] border-b border-slate-200 dark:border-gray-850"
 		></div>
 
 		<div class=" flex max-w-full w-full mx-auto px-1.5 md:px-2 pt-0.5 bg-transparent">
@@ -115,7 +115,7 @@
 					{/if}
 				</div>
 
-				<div class="flex-1 flex gap-3 justify-end lg:justify-center mr-3 lg:mr-0">
+				<div class="flex-1 flex gap-3 justify-end xl:justify-center mr-3 xl:mr-0">
 					<AppDropdown />
 				</div>
 

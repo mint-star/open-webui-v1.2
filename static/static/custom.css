@@ -78,6 +78,10 @@ html.titan .from-gray-50 {
 }
 
 html.dark .suites-btn {
-  background-color: #ffffff29 !important;
+  background-color: #ffffff0d !important;
   color: white;
+}
+
+html.dark .suites-btn img {
+  filter: brightness(1.5);
 }
