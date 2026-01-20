@@ -31,7 +31,7 @@
 	$: apps = updateSuiteAccess(suites, $models);
 </script>
 
-<div class="flex lg:hidden items-center">
+<div class="flex xl:hidden items-center">
 	<DropdownMenu.Root>
 		<DropdownMenu.Trigger
 			class="inline-flex items-center gap-2 py-2 px-4 rounded-md text-sm font-medium bg-gray-100 text-black hover:bg-gray-200 whitespace-nowrap suites-btn"
@@ -82,7 +82,7 @@
 	</DropdownMenu.Root>
 </div>
 
-<div class="hidden lg:flex items-center gap-2">
+<div class="hidden xl:flex items-center gap-2">
 	{#each apps as suite}
 		<DropdownMenu.Root>
 			<DropdownMenu.Trigger
@@ -117,7 +117,13 @@
 							<img src={app.icon} alt={app.label} class="w-5 h-5 shrink-0" />
 							<span class="text-sm font-medium">{app.label}</span>
 							{#if !app.access}
-								<span class="ml-auto text-xs">🔒</span>
+								<svg class="w-3 h-3 ml-auto text-gray-600 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+									<path
+										fill-rule="evenodd"
+										d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+										clip-rule="evenodd"
+									/>
+								</svg>
 							{/if}
 						</a>
 					</DropdownMenu.Item>
@@ -132,23 +138,30 @@
 		<Dialog.Overlay class="fixed inset-0 z-[1000] bg-black/50" />
 
 		<Dialog.Content
-			class="fixed z-[1001] top-1/2 left-1/2 w-[90vw] max-w-sm
+			class="fixed z-[1001] top-1/2 left-1/2 w-[90vw] max-w-md
              -translate-x-1/2 -translate-y-1/2
-             bg-white rounded-lg shadow-xl p-6 text-center"
+             bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 text-center border border-white dark:border-gray-600"
 		>
-			<Dialog.Title class="text-lg font-bold text-red-600 mb-2">RESTRICTED ACCESS</Dialog.Title>
+			<div class="flex justify-center mt-8 mb-3">
+				<div class="w-[70px]">
+					<img src="/static/error-icon.svg" alt="">
+				</div>
+			</div>
+			<Dialog.Title class="text-lg font-semibold text-black mb-1 dark:text-white">Restricted Access</Dialog.Title>
 
-			<Dialog.Description class="text-gray-800 mb-4 text-sm">
+			<Dialog.Description class="text-slate-600 dark:text-slate-300 mb-4 text-sm">
 				For access, kindly contact
-				<a href="mailto:titan.support@jiostar.com" class="font-medium">titan.support@jiostar.com</a
+				<a href="mailto:titan.support@jiostar.com" class="font-medium text-secondary-700 dark:text-secondary-50 underline underline-offset-[3px]">titan.support@jiostar.com</a
 				>.
 			</Dialog.Description>
 			<Dialog.Close
 				class="focus-visible:ring-foreground focus-visible:ring-offset-background focus-visible:outline-hidden absolute right-5 top-5 rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 active:scale-[0.98]"
 			>
 				<div>
-					<XMark className="w-5 h-5"></XMark>
-					<span class="sr-only">Close</span>
+					<!-- svelte-ignore component_name_lowercase -->
+					<div class="border-gray-700 dark:border-gray-500 text-black p-1 border rounded-md">
+						<XMark className="w-5 h-5 text-black dark:text-white"></XMark>
+					</div>
 				</div>
 			</Dialog.Close>
 		</Dialog.Content>

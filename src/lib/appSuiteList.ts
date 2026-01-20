@@ -97,21 +97,21 @@ export const suites: AppSuite[] = [
       },
     ]
   },
-  {
-    icon: "/static/suite/content.svg",
-    suiteName: "Content Suite",
-    bg: "ffeeee",
-    apps: [
-      {
-        label: "Script Studio",
-        href: PUBLIC_SCRIPT_STUDIO,
-        icon: "/static/script-studio.png",
-      },
-      {
-        label: "Jiostar Creator",
-        href: PUBLIC_JIOSTAR_CREATOR,
-        icon: "/static/jioStar-creator.png",
-      },
-    ]
-  },
+  // {
+  //   icon: "/static/suite/content.svg",
+  //   suiteName: "Content Suite",
+  //   bg: "ffeeee",
+  //   apps: [
+  //     {
+  //       label: "Script Studio",
+  //       href: PUBLIC_SCRIPT_STUDIO,
+  //       icon: "/static/script-studio.png",
+  //     },
+  //     {
+  //       label: "Jiostar Creator",
+  //       href: PUBLIC_JIOSTAR_CREATOR,
+  //       icon: "/static/jioStar-creator.png",
+  //     },
+  //   ]
+  // },
 ];

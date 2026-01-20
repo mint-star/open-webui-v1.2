@@ -381,7 +381,7 @@
 		id="model-selector-{id}-button"
 	>
 		<div
-			class="flex w-full text-left px-0.5 bg-transparent truncate {triggerClassName} justify-between {($settings?.highContrastMode ??
+			class="flex w-full text-left px-0.5 bg-transparent truncate overflow-hidden text-ellipsis {triggerClassName} justify-between {($settings?.highContrastMode ??
 			false)
 				? 'dark:placeholder-gray-100 placeholder-gray-800'
 				: 'placeholder-gray-400'}"
@@ -394,11 +394,13 @@
 				);
 			}}
 		>
-			{#if selectedModel}
-				{selectedModel.label}
-			{:else}
-				{placeholder}
-			{/if}
+			<div class="max-w-[200px] overflow-hidden text-ellipsis">
+				{#if selectedModel}
+					{selectedModel.label}
+				{:else}
+					{placeholder}
+				{/if}
+			</div>
 			<ChevronDown className=" self-center ml-2 size-3" strokeWidth="2.5" />
 		</div>
 	</DropdownMenu.Trigger>
