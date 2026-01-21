@@ -77,6 +77,10 @@ html.titan .from-gray-50 {
   font-family: "Cadiz", sans-serif !important;
 }
 
+.suites-btn {
+  word-break: break-word;
+}
+
 html.dark .suites-btn {
   background-color: #ffffff0d !important;
   color: white;
