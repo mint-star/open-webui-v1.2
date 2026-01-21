@@ -43,7 +43,7 @@
 		</DropdownMenu.Trigger>
 
 		<DropdownMenu.Content
-			class="bg-white border border-gray-200 rounded shadow-lg mt-2 py-1 w-[250px] z-[999] dark:bg-gray-850 dark:border-gray-700"
+			class="bg-white border border-gray-200 rounded shadow-lg mt-2 py-1 w-[280px] z-[999] dark:bg-gray-850 dark:border-gray-700"
 		>
 			{#each apps as suite}
 				<div
@@ -64,7 +64,12 @@
 								: ''}"
 						>
 							<img src={app.icon} alt={app.label} class="w-5 h-5 shrink-0" />
-							<span class="text-sm font-medium">{app.label}</span>
+							<span class="text-sm font-medium">
+								{app.label}
+								{#if app.tag}
+									<small class="opacity-60 ml-1">{app.tag}</small>
+								{/if}
+							</span>
 							{#if !app.access}
 								<svg class="w-3 h-3 ml-auto text-gray-400" fill="currentColor" viewBox="0 0 20 20">
 									<path
@@ -102,7 +107,7 @@
 			</DropdownMenu.Trigger>
 
 			<DropdownMenu.Content
-				class="bg-white border border-gray-200 rounded shadow-lg mt-2 py-1 w-[250px] z-[999] dark:bg-gray-850 dark:border-gray-700"
+				class="bg-white border border-gray-200 rounded shadow-lg mt-2 py-1 w-[280px] z-[999] dark:bg-gray-850 dark:border-gray-700"
 			>
 				{#each suite.apps as app}
 					<DropdownMenu.Item>
@@ -115,7 +120,12 @@
 								: ''}"
 						>
 							<img src={app.icon} alt={app.label} class="w-5 h-5 shrink-0" />
-							<span class="text-sm font-medium">{app.label}</span>
+							<span class="text-sm font-medium">
+								{app.label}
+								{#if app.tag}
+									<small class="opacity-60 ml-1">{app.tag}</small>
+								{/if}
+							</span>
 							{#if !app.access}
 								<svg class="w-3 h-3 ml-auto text-gray-600 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20">
 									<path
