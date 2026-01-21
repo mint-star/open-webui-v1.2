@@ -1,6 +1,5 @@
 import {
-  PUBLIC_JIOSTAR_CREATOR,
-  PUBLIC_SCRIPT_STUDIO,
+  PUBLIC_SHOWSENSE_AI,
   PUBLIC_TALENTMATCH_AI,
   PUBLIC_TITAN_BASE_URL
 } from "$env/static/public";
@@ -97,21 +96,16 @@ export const suites: AppSuite[] = [
       },
     ]
   },
-  // {
-  //   icon: "/static/suite/content.svg",
-  //   suiteName: "Content Suite",
-  //   bg: "ffeeee",
-  //   apps: [
-  //     {
-  //       label: "Script Studio",
-  //       href: PUBLIC_SCRIPT_STUDIO,
-  //       icon: "/static/script-studio.png",
-  //     },
-  //     {
-  //       label: "Jiostar Creator",
-  //       href: PUBLIC_JIOSTAR_CREATOR,
-  //       icon: "/static/jioStar-creator.png",
-  //     },
-  //   ]
-  // },
+  {
+    icon: "/static/suite/marketing.svg",
+    suiteName: "Marketing Suite",
+    bg: "f5eeff",
+    apps: [
+      {
+        label: "ShowSense.AI",
+        href: PUBLIC_SHOWSENSE_AI,
+        icon: "/static/showSense_ai.svg",
+      },
+    ]
+  },
 ];
