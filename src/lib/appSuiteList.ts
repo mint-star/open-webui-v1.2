@@ -90,7 +90,7 @@ export const suites: AppSuite[] = [
         icon: "/static/showSense_ai.svg",
       },
       {
-        label: "Social Chtr",
+        label: "Social Chatter",
         href: PUBLIC_SOCIAL_CHTR,
         icon: "/static/social_chtr.svg",
         tag: "(beta)"
