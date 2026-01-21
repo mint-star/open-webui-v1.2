@@ -1,7 +1,8 @@
 import {
+  PUBLIC_SOCIAL_CHTR,
   PUBLIC_SHOWSENSE_AI,
   PUBLIC_TALENTMATCH_AI,
-  PUBLIC_TITAN_BASE_URL
+  PUBLIC_TITAN_BASE_URL,
 } from "$env/static/public";
 
 // 1. Define the specific model constants
@@ -105,6 +106,11 @@ export const suites: AppSuite[] = [
         label: "ShowSense.AI",
         href: PUBLIC_SHOWSENSE_AI,
         icon: "/static/showSense_ai.svg",
+      },
+      {
+        label: "Social Chtr",
+        href: PUBLIC_SOCIAL_CHTR,
+        icon: "/static/social_chtr.svg",
       },
     ]
   },
