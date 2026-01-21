@@ -42,6 +42,7 @@ dependencies = [
 
     "loguru==0.7.3",
     "asgiref==3.11.0",
+    "newrelic",
 
     "tiktoken",
     "mcp==1.22.0",

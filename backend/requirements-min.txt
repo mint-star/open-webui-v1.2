@@ -37,6 +37,7 @@ RestrictedPython==8.0
 
 loguru==0.7.3
 asgiref==3.11.0
+newrelic
 
 mcp==1.22.0
 openai
