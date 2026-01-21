@@ -26,6 +26,7 @@ export type AppItem = {
   icon: string;
   model?: AppModel;
   access?: boolean;
+  tag?: string;
 };
 
 export type AppSuite = {
@@ -36,25 +37,6 @@ export type AppSuite = {
 };
 
 export const suites: AppSuite[] = [
-  {
-    icon: "/static/suite/hr.svg",
-    suiteName: "HR Suite",
-    bg: "fff4ec",
-    apps: [
-      {
-        label: "Policy Chatbot",
-        href: `${PUBLIC_TITAN_BASE_URL}/?model=${policyChatbot}`,
-        icon: "/static/suite/policy-chatbot.svg",
-        model: policyChatbot,
-        access: false
-      },
-      {
-        label: "Talent Match AI",
-        href: PUBLIC_TALENTMATCH_AI,
-        icon: "/static/talent-match-ai.png",
-      },
-    ]
-  },
   {
     icon: "/static/suite/legal.svg",
     suiteName: "Legal Suite",
@@ -111,6 +93,27 @@ export const suites: AppSuite[] = [
         label: "Social Chtr",
         href: PUBLIC_SOCIAL_CHTR,
         icon: "/static/social_chtr.svg",
+        tag: "(beta)"
+      },
+    ]
+  },
+  {
+    icon: "/static/suite/hr.svg",
+    suiteName: "HR Suite",
+    bg: "fff4ec",
+    apps: [
+      {
+        label: "Policy Chatbot",
+        href: `${PUBLIC_TITAN_BASE_URL}/?model=${policyChatbot}`,
+        icon: "/static/suite/policy-chatbot.svg",
+        model: policyChatbot,
+        access: false,
+      },
+      {
+        label: "Talent Match AI",
+        href: PUBLIC_TALENTMATCH_AI,
+        icon: "/static/talent-match-ai.png",
+        tag: "(beta)"
       },
     ]
   },
