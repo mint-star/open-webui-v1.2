@@ -61,7 +61,6 @@
 	import dayjs from 'dayjs';
 	import { getChannels } from '$lib/apis/channels';
 	import GoogleAnalytics from '$lib/components/GoogleAnalytics.svelte';
-	import { dev, browser } from '$app/environment';
 
 	const unregisterServiceWorkers = async () => {
 		if ('serviceWorker' in navigator) {
