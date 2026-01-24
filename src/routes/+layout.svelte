@@ -4,6 +4,8 @@
 	import PyodideWorker from '$lib/workers/pyodide.worker?worker';
 	import { Toaster, toast } from 'svelte-sonner';
 
+	
+
 	let loadingProgress = spring(0, {
 		stiffness: 0.05
 	});
@@ -58,6 +60,7 @@
 	import { getUserSettings } from '$lib/apis/users';
 	import dayjs from 'dayjs';
 	import { getChannels } from '$lib/apis/channels';
+	import GoogleAnalytics from '$lib/components/GoogleAnalytics.svelte';
 
 	const unregisterServiceWorkers = async () => {
 		if ('serviceWorker' in navigator) {
@@ -827,6 +830,8 @@
 		<Spinner className="size-5" />
 	</div>
 {/if}
+
+<GoogleAnalytics />
 
 {#if loaded}
 	{#if $isApp}
