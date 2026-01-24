@@ -79,8 +79,11 @@ else
     ARGS=(--workers "$UVICORN_WORKERS")
 fi
 
+NEW_RELIC_CONFIG_FILE="${NEW_RELIC_CONFIG_FILE:-${SCRIPT_DIR}/newrelic.ini}"
+export NEW_RELIC_CONFIG_FILE
+
 # Run uvicorn
-WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec "$PYTHON_CMD" -m uvicorn open_webui.main:app \
+WEBUI_SECRET_KEY="$WEBUI_SECRET_KEY" exec newrelic-admin run-program "$PYTHON_CMD" -m uvicorn open_webui.main:app \
     --host "$HOST" \
     --port "$PORT" \
     --forwarded-allow-ips '*' \

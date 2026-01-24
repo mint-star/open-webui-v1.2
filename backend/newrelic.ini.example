@@ -1,0 +1,5 @@
+[newrelic]
+license_key =
+app_name = Open WebUI
+distributed_tracing.enabled = true
+log = stdout
