@@ -47,14 +47,16 @@ export const suites: AppSuite[] = [
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${legalContractSuit}`,
         icon: "/static/suite/legal-contract-suit.svg",
         model: legalContractSuit,
-        access: false
+        access: false,
+        tag: "(beta)"
       },
       {
         label: "Legal Knowledge Base",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${legalKnowledgeBase}`,
         icon: "/static/suite/legal-knowledge-suit.svg",
         model: legalKnowledgeBase,
-        access: false
+        access: false,
+        tag: "(beta)"
       },
     ]
   },
@@ -68,14 +70,16 @@ export const suites: AppSuite[] = [
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${tvViewership}`,
         icon: "/static/suite/tv-viewership-2.svg",
         model: tvViewership,
-        access: false
+        access: false,
+        tag: "(beta)"
       },
       {
         label: "TV Revenue Agent",
         href: `${PUBLIC_TITAN_BASE_URL}/?model=${revenueAgent}`,
         icon: "/static/suite/revenue-agent.svg",
         model: revenueAgent,
-        access: false
+        access: false,
+        tag: "(beta)"
       },
     ]
   },
@@ -88,6 +92,7 @@ export const suites: AppSuite[] = [
         label: "ShowSense.AI",
         href: PUBLIC_SHOWSENSE_AI,
         icon: "/static/showSense_ai.svg",
+        tag: "(beta)"
       },
       {
         label: "Social Chatter",
@@ -108,6 +113,7 @@ export const suites: AppSuite[] = [
         icon: "/static/suite/policy-chatbot.svg",
         model: policyChatbot,
         access: false,
+        tag: "(beta)"
       },
       {
         label: "Talent Match AI",
