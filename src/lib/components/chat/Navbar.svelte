@@ -115,11 +115,11 @@
 					{/if}
 				</div>
 
-				<div class="flex-1 flex gap-3 justify-end xl:justify-center mr-3 xl:mr-0">
+				<!-- <div class="flex-1 flex gap-3 justify-end xl:justify-center mr-3 xl:mr-0">
 					<AppDropdown />
-				</div>
+				</div> -->
 
-				<div class="flex flex-none items-center text-gray-600 dark:text-gray-400">
+				<div class="flex flex-none items-center text-gray-600 dark:text-gray-400 ml-auto">
 					
 					<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
 
