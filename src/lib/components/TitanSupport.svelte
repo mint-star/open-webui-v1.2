@@ -552,7 +552,13 @@
                 bind:value={description}
                 maxlength={maxLength}
                 rows={7}
-                placeholder="Describe what happened, what you expected, and how to reproduce it."
+                placeholder={
+                  requestType === "issue"
+                    ? "Describe what happened, what you expected, and how to reproduce it."
+                    : requestType === "question"
+                    ? "What would you like to know?"
+                    : "Describe the improvement you have in mind and the problem it would solve."
+                }
                 class="w-full rounded-2xl bg-white dark:bg-gray-800 border-1 border-slate-200 focus:border-slate-300 dark:border-gray-700 p-4 pb-9
                        text-sm text-slate-800 dark:text-gray-200 placeholder-slate-400 dark:placeholder-gray-500
                        focus:outline-none resize-none"
