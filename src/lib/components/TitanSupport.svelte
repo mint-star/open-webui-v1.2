@@ -423,7 +423,7 @@
         Request Submitted!
       </h2>
       <p class="text-sm text-slate-500 dark:text-gray-400 mb-7 leading-relaxed">
-        Your support request has been received. The TITAN team typically responds within one business day.
+        Your support request has been received.
       </p>
 
       <button
