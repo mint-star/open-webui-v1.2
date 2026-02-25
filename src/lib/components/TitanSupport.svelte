@@ -323,7 +323,7 @@
 			const formData = new FormData();
 			formData.append('request_type', requestTypeMap[requestType]);
 			formData.append('description', description.trim());
-			formData.append("email", $user.email || "");
+			formData.append("email", $user?.email || "");
 
 			uploadedFiles.forEach((fileObj, index) => {
 				formData.append(`attachments_attributes[${index}][attachment_file]`, fileObj.file);
