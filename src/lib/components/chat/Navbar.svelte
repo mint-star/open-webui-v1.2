@@ -40,7 +40,8 @@
 	import Knobs from '../icons/Knobs.svelte';
 	import { WEBUI_API_BASE_URL } from '$lib/constants';
 
-	import NavbarApps from '$lib/components/NavbarApps.svelte'
+  import NavbarApps from '$lib/components/NavbarApps.svelte'
+	import TitanSupport from '$lib/components/TitanSupport.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -61,6 +62,8 @@
 
 	let showShareChatModal = false;
 	let showDownloadChatModal = false;
+
+	let supportOpen = false;
 </script>
 
 <ShareChatModal bind:show={showShareChatModal} chatId={$chatId} />
@@ -120,6 +123,19 @@
 				</div>
 
 				<div class="flex flex-none items-center text-gray-600 dark:text-gray-400 ml-auto">
+
+					<button on:click={() => supportOpen = true} class="mr-3 dark:text-gray-400 flex items-center gap-2 text-sm">
+						<span class="w-4 h-4">
+							<svg viewBox="0 0 16 16" fill="none" class="w-full h-full">
+								<g clip-path="url(#clip0_1714_5352)">
+									<path fill-rule="evenodd" clip-rule="evenodd" d="M9.61438 14.5381C9.61438 13.9851 9.16606 13.5368 8.61306 13.5368H7.38694C7.12137 13.5368 6.86668 13.6423 6.6789 13.8301C6.49112 14.0178 6.38562 14.2725 6.38562 14.5381C6.38562 15.0911 6.83394 15.5394 7.38694 15.5394H8.61306C9.16606 15.5394 9.61438 15.0911 9.61438 14.5381ZM2.10503 11.9561C2.27228 11.9689 2.47463 11.9762 2.67788 11.9643C2.80527 12.6103 3.15296 13.192 3.66157 13.6101C4.17018 14.0282 4.80816 14.2568 5.46656 14.2568H5.84863C5.81468 14.4428 5.8146 14.6333 5.84837 14.8193H5.46656C4.65742 14.8193 3.87472 14.5312 3.25874 14.0065C2.64276 13.4818 2.23376 12.755 2.10503 11.9561ZM1.81891 11.3576C1.31037 11.2718 0.848649 11.0087 0.515675 10.6149C0.1827 10.2211 2.5376e-06 9.72205 0 9.20634L0 7.87687C0 7.29827 0.229845 6.74337 0.638972 6.33424C1.0481 5.9251 1.603 5.69525 2.18159 5.69524H2.32681C2.55894 2.76537 5.01025 0.459961 8 0.459961C10.9897 0.459961 13.4411 2.76537 13.6732 5.69524H13.8184C14.397 5.69525 14.9519 5.9251 15.361 6.33424C15.7702 6.74337 16 7.29827 16 7.87687V9.20634C16 9.78493 15.7702 10.3398 15.361 10.749C14.9519 11.1581 14.397 11.388 13.8184 11.388H13.1746C12.9076 11.388 12.6912 11.1715 12.6912 10.9045V6.15115C12.6912 3.56027 10.5909 1.45996 8 1.45996C5.40913 1.45996 3.30881 3.56027 3.30881 6.15115V10.9045C3.30881 11.093 3.20091 11.2564 3.04347 11.3361C2.61009 11.4865 1.938 11.3777 1.81891 11.3576Z" fill="currentColor"/>
+								</g>
+							</svg>
+						</span>
+						Support
+					</button>
+
+					<TitanSupport bind:open={supportOpen} />
 					
 					<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
 
