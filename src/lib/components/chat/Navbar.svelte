@@ -40,7 +40,7 @@
 	import Knobs from '../icons/Knobs.svelte';
 	import { WEBUI_API_BASE_URL } from '$lib/constants';
 
-	import AppDropdown from '$lib/components/app-dropdown.svelte';
+  import NavbarApps from '$lib/components/NavbarApps.svelte'
 	import TitanSupport from '$lib/components/TitanSupport.svelte';
 
 	const i18n = getContext('i18n');
@@ -118,9 +118,9 @@
 					{/if}
 				</div>
 
-				<!-- <div class="flex-1 flex gap-3 justify-end xl:justify-center mr-3 xl:mr-0">
-					<AppDropdown />
-				</div> -->
+				<div class="flex-1 flex gap-3 justify-end lg:justify-center mr-3 xl:mr-0">
+					<NavbarApps />
+				</div>
 
 				<div class="flex flex-none items-center text-gray-600 dark:text-gray-400 ml-auto">
 
