@@ -21,6 +21,7 @@
 		file: File;
 		preview: string;
 		name: string;
+		size: number;
 	}
 
 	interface OAuthTokenResponse {
@@ -32,7 +33,8 @@
 	let requestType: RequestType = 'issue';
 	let description = '';
 	const maxLength = 2000;
-	const maxFiles = 20;
+	const maxFiles = 10;
+	const maxFileSizeBytes = 2 * 1024 * 1024; // 2MB per file
 	const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg'];
 
 	let supportID: string = '';
@@ -49,7 +51,7 @@
 	let dragCounter = 0;
 	let pasteSuccess = false;
 
-	// ─── SUCCESS MODAL (only addition) ────────────────────────────────────────
+	// ─── SUCCESS MODAL ────────────────────────────────────────────────────────
 	let showSuccessModal = false;
 
 	function handleSuccessClose(): void {
@@ -57,7 +59,14 @@
 		open = false;
 		onClose();
 	}
-	// ──────────────────────────────────────────────────────────────────────────
+
+	// ─── Helpers ──────────────────────────────────────────────────────────────
+
+	function formatBytes(bytes: number): string {
+		if (bytes < 1024) return `${bytes} B`;
+		if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+		return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+	}
 
 	const requestTypeMap: Record<RequestType, string> = {
 		issue: 'issue',
@@ -103,7 +112,6 @@
 		}
 	}
 
-	// Fetch token whenever dialog opens (and we don't already have one)
 	$: if (open && !bearerToken) {
 		fetchBearerToken();
 	}
@@ -191,20 +199,39 @@
 
 	function validateAndFilter(files: File[]): File[] {
 		fileErrorMessage = '';
+		const errors: string[] = [];
 
-		const invalid = files.filter((f) => !allowedTypes.includes(f.type));
-		if (invalid.length > 0) {
-			fileErrorMessage = `Invalid file type${invalid.length > 1 ? 's' : ''}: only PNG, JPG and JPEG are allowed.`;
+		// 1. Type check
+		const invalidType = files.filter((f) => !allowedTypes.includes(f.type));
+		if (invalidType.length > 0) {
+			errors.push(
+				`Invalid file type${invalidType.length > 1 ? 's' : ''}: only PNG, JPG and JPEG are allowed.`
+			);
+		}
+		let valid = files.filter((f) => allowedTypes.includes(f.type));
+
+		// 2. Per-file size check (max 2MB each)
+		const tooLarge = valid.filter((f) => f.size > maxFileSizeBytes);
+		if (tooLarge.length > 0) {
+			const names = tooLarge.map((f) => `"${f.name}" (${formatBytes(f.size)})`).join(', ');
+			errors.push(
+				`${tooLarge.length} file${tooLarge.length > 1 ? 's exceed' : ' exceeds'} the ${formatBytes(maxFileSizeBytes)} per-file limit and ${tooLarge.length > 1 ? 'were' : 'was'} skipped: ${names}.`
+			);
+		}
+		valid = valid.filter((f) => f.size <= maxFileSizeBytes);
+
+		// 3. File count check (max 10)
+		const remaining = maxFiles - uploadedFiles.length;
+		if (valid.length > remaining) {
+			const skipped = valid.length - remaining;
+			errors.push(
+				`Maximum ${maxFiles} screenshots allowed. ${skipped} file${skipped > 1 ? 's were' : ' was'} skipped.`
+			);
+			valid = valid.slice(0, remaining);
 		}
 
-		const valid = files.filter((f) => allowedTypes.includes(f.type));
-		const remaining = maxFiles - uploadedFiles.length;
-
-		if (valid.length > remaining) {
-			fileErrorMessage = `Maximum ${maxFiles} screenshots allowed. ${valid.length - remaining} file${
-				valid.length - remaining > 1 ? 's were' : ' was'
-			} skipped.`;
-			return valid.slice(0, remaining);
+		if (errors.length > 0) {
+			fileErrorMessage = errors.join(' ');
 		}
 
 		return valid;
@@ -289,7 +316,8 @@
 						id: Date.now() + Math.random(),
 						file,
 						preview: e.target?.result as string,
-						name: file.name
+						name: file.name,
+						size: file.size
 					}
 				];
 			};
@@ -311,9 +339,8 @@
 		}
 
 		if (!bearerToken) {
-			// Try re-fetching token if we don't have one
 			await fetchBearerToken();
-			if (!bearerToken) return; // fetchBearerToken sets errorMessage
+			if (!bearerToken) return;
 		}
 
 		isSubmitting = true;
@@ -323,7 +350,7 @@
 			const formData = new FormData();
 			formData.append('request_type', requestTypeMap[requestType]);
 			formData.append('description', description.trim());
-			formData.append("email", $user?.email || "");
+			formData.append('email', $user?.email || '');
 
 			uploadedFiles.forEach((fileObj, index) => {
 				formData.append(`attachments_attributes[${index}][attachment_file]`, fileObj.file);
@@ -387,9 +414,7 @@
 			pasteSuccess = false;
 			open = false;
 
-			// ─── Show success modal instead of alert (only change here) ───────────
 			showSuccessModal = true;
-			// ──────────────────────────────────────────────────────────────────────
 		} catch (error) {
 			console.error('Error submitting support request:', error);
 			errorMessage =
@@ -414,7 +439,6 @@
 		<div
 			class="relative z-10 bg-white dark:bg-gray-850 rounded-2xl shadow-2xl p-8 w-full max-w-sm flex flex-col items-center text-center"
 		>
-			<!-- Animated tick -->
 			<div
 				class="w-20 h-20 rounded-full bg-green-50 dark:bg-green-900/20 flex items-center justify-center mb-5"
 			>
@@ -439,7 +463,8 @@
 			<div
 				class="w-full bg-slate-100 dark:bg-gray-500 dark:text-white text-black py-3 px-4 rounded-xl mb-7 text-sm flex items-center"
 			>
-				<span class="opacity-70">Ticket ID:</span> <span class="font-semibold ml-auto">{supportID}</span>
+				<span class="opacity-70">Ticket ID:</span>
+				<span class="font-semibold ml-auto">{supportID}</span>
 			</div>
 
 			<button
@@ -452,7 +477,7 @@
 	</div>
 {/if}
 
-<!-- ─── Support Modal (completely unchanged) ──────────────────────────────── -->
+<!-- ─── Support Modal ──────────────────────────────────────────────────────── -->
 <Dialog.Root bind:open>
 	<Dialog.Portal>
 		<Dialog.Overlay class="fixed inset-0 bg-black/50 z-100" />
@@ -686,10 +711,13 @@
 									{/if}
 								</button>
 							</div>
-							<p
-								class="text-slate-500 dark:text-gray-500 text-[13px] mt-0.5 mb-2.5 opacity-80 mb-2.5"
-							>
-								Max 20 files · PNG, JPG only
+
+							<!-- Constraints hint -->
+							<p class="text-slate-500 dark:text-gray-500 text-[13px] mt-0.5 mb-2.5 opacity-80">
+								Max {maxFiles} files · PNG, JPG only · {formatBytes(maxFileSizeBytes)} per file
+								<span class="text-slate-400 dark:text-gray-600">
+									· {uploadedFiles.length}/{maxFiles} uploaded
+								</span>
 							</p>
 
 							<input
@@ -741,10 +769,13 @@
 								</p>
 							</div>
 
+							<!-- Validation errors -->
 							{#if fileErrorMessage}
-								<p class="mt-2 text-xs text-amber-600 dark:text-amber-400 flex items-center gap-1">
+								<div
+									class="mt-2 p-2.5 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl flex items-start gap-2"
+								>
 									<svg
-										class="w-3.5 h-3.5 shrink-0"
+										class="w-3.5 h-3.5 shrink-0 mt-0.5 text-amber-600 dark:text-amber-400"
 										viewBox="0 0 24 24"
 										fill="none"
 										stroke="currentColor"
@@ -756,8 +787,10 @@
 										<line x1="12" y1="8" x2="12" y2="12" />
 										<line x1="12" y1="16" x2="12.01" y2="16" />
 									</svg>
-									{fileErrorMessage}
-								</p>
+									<p class="text-xs text-amber-700 dark:text-amber-400 leading-relaxed">
+										{fileErrorMessage}
+									</p>
+								</div>
 							{/if}
 						</div>
 
@@ -782,9 +815,10 @@
 												✕
 											</button>
 											<div
-												class="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-black/75 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+												class="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black/75 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 text-center"
 											>
-												{file.name}
+												<div class="truncate max-w-[120px]">{file.name}</div>
+												<div class="text-gray-300">{formatBytes(file.size)}</div>
 											</div>
 										</div>
 									{/each}
@@ -792,7 +826,7 @@
 							</div>
 						{/if}
 
-						<!-- Error Message -->
+						<!-- Submit error -->
 						{#if errorMessage}
 							<div
 								class="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-xl"
