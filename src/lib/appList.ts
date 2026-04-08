@@ -36,11 +36,11 @@ export const apps: AppItem[] = [
     model: revenueAgent,
     access: false,
   },
-  {
-    label: "Policy Chatbot",
-    href: `${PUBLIC_TITAN_BASE_URL}/?model=${policyChatbot}`,
-    icon: "/static/suite/policy-chatbot.svg",
-    model: policyChatbot,
-    access: false,
-  }
+  // {
+  //   label: "Policy Chatbot",
+  //   href: `${PUBLIC_TITAN_BASE_URL}/?model=${policyChatbot}`,
+  //   icon: "/static/suite/policy-chatbot.svg",
+  //   model: policyChatbot,
+  //   access: false,
+  // }
 ];

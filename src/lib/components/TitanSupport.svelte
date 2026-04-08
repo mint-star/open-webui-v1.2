@@ -471,7 +471,7 @@
 					</button>
 
 					<Dialog.Title class="text-xl font-bold text-slate-900 dark:text-gray-200 mb-1">
-						TITAN Support
+						TITAN AI Support
 					</Dialog.Title>
 					<Dialog.Description class="text-sm text-slate-400 dark:text-gray-500 mb-5">
 						If something isn't working as expected or you have a suggestion, please let us know.
